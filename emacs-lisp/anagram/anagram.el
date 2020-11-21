@@ -7,15 +7,17 @@
 (require 'cl-lib)
 (require 'seq)
 
+(defun sort-str (word)
+  (sort (split-string (downcase word) "") 'string-lessp))
+
 (defun anagrams-for (word list)
-  (let ((word-chars-sorted
-       (sort (split-string (downcase word) "") 'string-lessp)))
+  (let ((word-chars-sorted (sort-str word)))
     (seq-filter
      (lambda (w)
        (and
         (not (equal w word))
         (equal
-         (sort (split-string (downcase w) "") 'string-lessp)
+         (sort-str w)
          word-chars-sorted)))
      list)))
 
