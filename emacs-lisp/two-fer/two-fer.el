@@ -4,10 +4,7 @@
 
 ;;; Code:
 (defun two-fer (&optional name)
-  (concat
-   "One for "
-   (or name "you")
-   ", one for me."))
+  (format "One for %s, one for me." (or name "you")))
 
 (provide 'two-fer)
 ;;; two-fer.el ends here
